@@ -28,7 +28,7 @@ class Board extends React.Component {
     super(props);
     
     const today = new Date();
-    const birthday_ = moment(today).subtract(20, "years");
+    const birthday_ = moment();
     
     this.state = {
       squares: Array(5200).fill(null),
@@ -102,7 +102,7 @@ class Board extends React.Component {
         <div className="calendarIntro">
           When were you born?
         <DatePicker className="calendarIntro"
-          selected={moment(this.state.today).subtract(20, "years")}
+          selected={this.state.startDate}
           onChange={this.handleChange}
           peekNextMonth
           showMonthDropdown
@@ -110,6 +110,7 @@ class Board extends React.Component {
           dropdownMode="select"
           minDate={moment().subtract(80*52, "weeks")}
           maxDate={moment()}
+          placeholderText="Enter Your Birthdate"
         />
         </div>
         <div className="calendarIntro">
